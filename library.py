@@ -31,3 +31,6 @@ def clean_sub_str(str, sub_str):
     [tr.remove(word) for word in tr[:] if sub_str in word]
     return " ".join(tr)  
 
+
+    
+

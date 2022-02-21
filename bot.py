@@ -1,7 +1,5 @@
 
-# Помните игру с конфетами из модуля "Математика и Информатика"? Создайте такую игру для игры человек против человека
-# Добавьте игру против бота
-# Подумайте как наделить бота "интеллектом" 
+
 # Вы когда-нибудь играли в игру "Крестики-нолики"? Попробуйте создать её.
 
 # Done! Congratulations on your new bot. You will find it at t.me/sidorenkovladimir_bot. You can now add a description, about section and profile picture for your bot, see /help for a list of commands. By the way, when you've finished creating your cool bot, ping our Bot Support if you want a better username for it. Just make sure the bot is fully operational before you do this.
@@ -14,8 +12,10 @@
 
 # ------------------------------------------------------------------------------------------------------------------------
 
+from cgitb import text
 import telebot
 import library
+import random
 bot = telebot.TeleBot('5155648528:AAEl6YLUXWSKkzmkitOJGS98y0HDxSRXkkY')
 
 # Напишите программу, удаляющую из текста все слова содержащие "абв".
@@ -45,6 +45,79 @@ bot = telebot.TeleBot('5155648528:AAEl6YLUXWSKkzmkitOJGS98y0HDxSRXkkY')
 #     bot.send_message(message.from_user.id, f'Результат удаления {str}')
 
 # ------------------------------------------------------------------------------------------------------------------------
+
+
+# sweets = 121
+# max_sweets = 28
+# turn = 1
+# sweet_count = 0
+# def get_hint_user(sweets, max_sweets):
+#     if max_sweets >= sweets:
+#         return sweets
+#     number = sweets // max_sweets
+#     y = number * max_sweets + 1
+#     return sweets - y
+
+# def get_hint_comp(sweets, max_sweets):
+#     if max_sweets >= sweets:
+#         return sweets
+#     number = sweets // max_sweets    
+#     y = number * max_sweets + 1
+#     if y >= sweets:
+#         y = (number - 1) * max_sweets + 1
+#     return (random.randint(1, sweets if max_sweets > sweets else max_sweets) 
+#     if sweets - y == 0 else sweets - y)
+
+# def get_sweets(turn, message):
+#     bot.reply_to(message, f'Конфет осталось {sweets}')
+#     if turn == 1:
+#         bot.reply_to(message, f'Заберите {get_hint_user(sweets, max_sweets)} конфет')
+#         bot.reply_to(message, f'Сколько конфет забрать игроку?')
+#         bot.register_next_step_handler(message, set_sweet_count)
+#     else:
+#         number = get_hint_comp(sweets, max_sweets)
+#         bot.reply_to(message, f'Бот ввел число: {number}')
+#         message.text = number
+#         set_sweet_count(message)
+        
+            
+
+# def set_sweet_count(message):
+#     global sweet_count
+#     global sweets
+#     global turn
+#     global bot
+#     sweet_count = int(message.text)
+#     if sweet_count >= max_sweets:
+#             sweet_count = max_sweets
+#     sweets -= sweet_count    
+#     if sweets <= 0:
+#         turn = 'Бот' if turn == 2 else 'Человек'
+#         bot.reply_to(message, f'Победил игрок {turn}')
+#         return    
+#     turn = 2 if turn == 1 else 1
+#     get_sweets(turn, message)
+
+
+# @bot.message_handler(commands=['help'])
+# def send_welcome(message):
+#     bot.reply_to(message, "Игра в конфетки. Кто взял последние тот выиграл. За один раз можно взять 28 конфет")
+
+# @bot.message_handler(commands=['start'])
+# def send_welcome(message):
+#     global turn
+#     turn = 1
+#     global sweets
+#     sweets = 121
+#     global max_sweets
+#     max_sweets = 28
+#     global sweet_count
+#     sweet_count = 0  
+#     get_sweets(turn, message)
+
+
+# ------------------------------------------------------------------------------------------------------------------------
+
 
 bot.infinity_polling()
 
